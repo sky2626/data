@@ -35,7 +35,7 @@ const products = ref([
         <a v-for="product in products" :key="product.id" :href="product.link"
           class="w-full h-96 bg-white shadow-lg rounded-2xl flex items-center justify-center transition-transform hover:scale-105 bg-cover bg-center"
           :style="{ backgroundImage: `url(${product.image})` }">
-          <h5 class="text-2xl font-bold text-red-500 bg-white bg-opacity-50 px-4 py-2 rounded-lg">Boy Now</h5>
+          <h5 class="text-2xl font-bold text-red-500 bg-white bg-opacity-50 px-4 py-2 rounded-lg">Buy Now</h5>
         </a>
       </div>
     </UContainer>
