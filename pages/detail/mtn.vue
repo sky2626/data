@@ -1,35 +1,59 @@
 <template>
-    <UContainer class="pt-40-4">
-      <div class="max-w-md mx-auto bg-white shadow-lg rounded-2xl overflow-hidden">
-        <!-- Product Image -->
-        <div class="h-64 bg-cover bg-center" :style="{ backgroundImage: `url(${product.image})` }">
-        </div>
-      
-        <!-- Product Info -->
-        <div class="p-5">
-          <h2 class="text-xl font-bold text-gray-900">{{ product.name }}</h2>
-          <p class="text-gray-600 mt-2">{{ product.description }}</p>
-          <p class="text-lg font-semibold text-green-600 mt-3">{{ product.price }}</p>
-      
-          <!-- Add to Cart Button -->
-          <button class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition">
-            Add to Cart
+  <div class="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-2xl">
+    <h1 class="text-2xl font-bold text-gray-800">Stylish Unisex T-Shirt</h1>
+    <p class="text-gray-600 mt-2">Comfortable and trendy t-shirt for both men and women.</p>
+    <img src="#" alt="T-Shirt" class="w-full h-64 object-cover mt-4 rounded-xl" />
+
+    <div class="mt-4">
+      <h2 class="text-lg font-semibold">Available Sizes</h2>
+      <div class="gap-4 grid grid-cols-3 md:grid-cols-4">
+        <div v-for="(price, size) in sizes" :key="size" class="flex flex-col w-[100px]">
+          <button @click="togglePrice(size)" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+            {{ size }} GB
           </button>
+          <span v-if="showPrice === size" class="text-gray-800 mt-1">GH₵{{ price }}</span>
         </div>
       </div>
-    </UContainer>
+      <h2>show data price here</h2>
+      <span v-if="showPrice === size" class="text-gray-800 mt-1">GH₵{{ price }}</span>
+
+    </div>
+
+    <div class="mt-6">
+      <a :href="whatsappLink" class="bg-green-500 text-white px-6 py-2 rounded-lg text-lg hover:bg-green-600">
+        Order Now
+      </a>
+    </div>
+  </div>
 </template>
-
-
 
 <script setup>
 import { ref } from 'vue';
 
-const product = ref({
-  name: "Wireless Headphones",
-  price: "$99.99",
-  description: "High-quality wireless headphones with noise cancellation and long battery life.",
-  image: "https://example.com/headphones.jpg"
+const sizes = ref({
+  1: 6,
+  2: 11,
+  3: 16,
+  4: 21,
+  5: 26,
+  6: 31,
+  7: 36,
+  8: 41,
+  9: 46,
+  10: 51,
+  11: 56,
+  12: 61,
+  13: 66,
+  14: 71,
+  15: 76,
+  16: 81,
 });
-</script>
 
+const showPrice = ref(null);
+
+const togglePrice = (size) => {
+  showPrice.value = showPrice.value === size ? null : size;
+};
+
+const whatsappLink = "https://wa.me/+233537391808";
+</script>
