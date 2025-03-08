@@ -73,3 +73,13 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+
+usefull site for the bussiness
+
+1.  sms:
+    https://bms.mnotify.com/signin
+2.  Manners:
+    https://walmarstoresgh.com/
+3. agents registration:
+     https://agent.bestdealsgh.com
