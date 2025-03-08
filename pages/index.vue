@@ -63,7 +63,7 @@ const products = ref([
         <div v-for="newproduct in newproducts" :key="newproduct.name"
           class="bg-white shadow-lg p-4 rounded-2xl transform hover:scale-105 transition-all duration-300 ease-in-out">
 
-          <div class="relative">
+          <div class="">
             <img :src="newproduct.image" alt="product.name"
               class="w-full h-48 object-cover rounded-xl border border-gray-200">
           </div>
