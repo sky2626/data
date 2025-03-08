@@ -108,22 +108,22 @@ const products = ref({
   1: {
     name: "MTN Data",
     image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcTetditgkwKb-7fCP26_WQesZAoldpOcC44AfFAkco5jMOEMcaS&psig=AOvVaw3CgmYE-MD34aCjVxiBpac9&ust=1741439274786000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCIDUz_yE-IsDFQAAAAAdAAAAABAE",
-    price: 10,
+    price: "10 - 400",
   },
   2: {
     name: "Vodafone Data",
     image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcTetditgkwKb-7fCP26_WQesZAoldpOcC44AfFAkco5jMOEMcaS&psig=AOvVaw3CgmYE-MD34aCjVxiBpac9&ust=1741439274786000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCIDUz_yE-IsDFQAAAAAdAAAAABAE",
-    price: 10,
+    price: "10 - 400",
   },
   3: {
     name: "Airtel Data",
     image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcTetditgkwKb-7fCP26_WQesZAoldpOcC44AfFAkco5jMOEMcaS&psig=AOvVaw3CgmYE-MD34aCjVxiBpac9&ust=1741439274786000&source=images&cd=vfe&opi=89978449",
-    price: 10,
+    price: "10 - 400",
   },
   4: {
     name: "Airtel Data",
     image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcTetditgkwKb-7fCP26_WQesZAoldpOcC44AfFAkco5jMOEMcaS&psig=AOvVaw3CgmYE-MD34aCjVxiBpac9&ust=1741439274786000&source=images&cd=vfe&opi=89978449",
-    price: 10,
+    price: "10 - 400",
   },
 })
 

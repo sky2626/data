@@ -7,31 +7,35 @@
       </button>
       <ul class="hidden md:flex space-x-6">
         <li>
-          <NuxtLink to="/" class="hover:text-gray-300">Home</NuxtLink>
+          <NuxtLink to="/" class="block p-2 hover:text-gray-300 font-bold">Home</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/about" class="hover:text-gray-300">About</NuxtLink>
+          <NuxtLink to="/" class="block p-2 hover:text-gray-300 font-bold">Shop</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/services" class="hover:text-gray-300">Services</NuxtLink>
+          <NuxtLink to="/#" class="block p-2 hover:text-gray-300 font-bold">Streaming</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/contact" class="hover:text-gray-300">Contact</NuxtLink>
+          <NuxtLink to="/contact" class="block p-2 hover:text-gray-300 font-bold">Contact</NuxtLink>
         </li>
       </ul>
+      <div class="flex items-center space-x-4">
+        <h2 class="block p-2 hover:text-gray-300 font-bold">GH₵0.00</h2>
+        <IconsCart class="text-black font-bold text-2xl" />
+      </div>
     </div>
     <ul v-if="isMenuOpen" class="flex flex-col space-y-4 mt-4 md:hidden text-center">
       <li>
-        <NuxtLink to="/" class="block p-2 hover:text-gray-300">Home</NuxtLink>
+        <NuxtLink to="/" class="block p-2 hover:text-gray-300 font-bold">Home</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/about" class="block p-2 hover:text-gray-300">About</NuxtLink>
+        <NuxtLink to="/" class="block p-2 hover:text-gray-300 font-bold">Shop</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/services" class="block p-2 hover:text-gray-300">Services</NuxtLink>
+        <NuxtLink to="/#" class="block p-2 hover:text-gray-300 font-bold">Streaming</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/contact" class="block p-2 hover:text-gray-300">Contact</NuxtLink>
+        <NuxtLink to="/contact" class="block p-2 hover:text-gray-300 font-bold">Contact</NuxtLink>
       </li>
     </ul>
   </nav>
