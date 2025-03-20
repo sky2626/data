@@ -106,7 +106,117 @@ const publicKey = "pk_test_eb3bc9ba87ba3fe7f19a2fe09d4a7132ea9d37b2"; // Replace
 const togglePrice = (size, price) => {
   selectedPrice.value = selectedPrice.value === price ? null : price;
 };
+// this works
+//const payWithPaystack = () => {
+//  if (!selectedPrice.value || !phoneNumber.value) {
+//    alert("Please select a data plan and enter your phone number.");
+//    return;
+//  }
+//
+//  if (!window.PaystackPop) {
+//    alert("Paystack script not loaded.");
+//    return;
+//  }
+//
+//  const handler = window.PaystackPop.setup({
+//    key: publicKey,
+//    email: `${phoneNumber.value}@example.com`, // Using phone as an email identifier
+//    amount: selectedPrice.value * 100, // Paystack expects amount in kobo
+//    currency: "GHS",
+//    callback: function (response) {
+//      alert("Payment Successful! Ref: " + response.reference);
+//      console.log(response);
+//      
+//    },
+//    
+//    onClose: function () {
+//      alert("Payment window closed.");
+//    }
+//  });
+//
+//  handler.openIframe();
+//};
+//onMounted(() => {
+//  const script = document.createElement("script");
+//  script.src = "https://js.paystack.co/v1/inline.js";
+//  document.body.appendChild(script);
+//});
 
+
+//const payWithPaystack = async () => {
+//  if (!selectedPrice.value || !phoneNumber.value) {
+//    alert("Please select a data plan and enter your phone number.");
+//    return;
+//  }
+//
+//  if (!window.PaystackPop) {
+//    alert("Paystack script not loaded.");
+//    return;
+//  }
+//
+//  const handler = window.PaystackPop.setup({
+//    key: publicKey,
+//    email: `${phoneNumber.value}@example.com`, // Using phone as an email identifier
+//    amount: selectedPrice.value * 100, // Paystack expects amount in kobo
+//    currency: "GHS",
+//    callback: async function (response) {
+//      alert("Payment Successful! Ref: " + response.reference);
+//      console.log(response);
+//
+//      // Send payment details to the backend
+//      //try {
+//      //  const res = await fetch("/api/payments", {
+//      //    method: "POST",
+//      //    headers: {
+//      //      "Content-Type": "application/json",
+//      //    },
+//      //    body: JSON.stringify({
+//      //      phone: phoneNumber.value,
+//      //      reference: response.reference,
+//      //      size: Object.keys(sizes.value).find(key => sizes.value[key] === selectedPrice.value),
+//      //      amount: selectedPrice.value,
+//      //    }),
+//      //  });
+//
+      //  if (!res.ok) throw new Error("Payment recording failed.");
+//
+//      //  alert("Payment recorded successfully!");
+//      //} catch (error) {
+//      //  console.error("Error saving payment:", error);
+//      //  alert("Payment recording failed.");
+//      //}
+//    },
+//    onClose: function () {
+//      alert("Payment window closed.");
+//    },
+//  });
+//
+//  handler.openIframe();
+//};
+//
+//onMounted(() => {
+//  if (!window.PaystackPop) {
+//    const script = document.createElement("script");
+//    script.src = "https://js.paystack.co/v1/inline.js";
+//    script.onload = () => {
+//      console.log("Paystack script loaded successfully.");
+//    };
+//    document.body.appendChild(script);
+//  }
+//});
+
+// Function to load Paystack script
+const loadPaystack = () => {
+  if (!window.PaystackPop) {
+    const script = document.createElement("script");
+    script.src = "https://js.paystack.co/v1/inline.js";
+    script.async = true;
+    script.onload = () => console.log("✅ Paystack script loaded successfully.");
+    document.body.appendChild(script);
+  }
+};
+
+// Function to initiate payment
 const payWithPaystack = () => {
   if (!selectedPrice.value || !phoneNumber.value) {
     alert("Please select a data plan and enter your phone number.");
@@ -114,7 +224,7 @@ const payWithPaystack = () => {
   }
 
   if (!window.PaystackPop) {
-    alert("Paystack script not loaded.");
+    alert("Paystack script is not loaded yet. Please try again.");
     return;
   }
 
@@ -124,26 +234,41 @@ const payWithPaystack = () => {
     amount: selectedPrice.value * 100, // Paystack expects amount in kobo
     currency: "GHS",
     callback: function (response) {
-      alert("Payment Successful! Ref: " + response.reference);
-      //if response.reference === "success" {
-       // phoneNumber.value = "";
-      //}
-      //else {
-      //  alert("Payment Failed! Ref: " + response.reference);
-      //}
+      alert("✅ Payment Successful! Ref: " + response.reference);
       console.log(response);
+
+      // Send payment details to the backend
+      fetch("/api/payments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          phone: phoneNumber.value,
+          reference: response.reference,
+          size: Object.keys(sizes.value).find((key) => sizes.value[key] === selectedPrice.value),
+          amount: selectedPrice.value,
+        }),
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error("❌ Payment not verify.");
+          alert("✅ Payment recorded successfully!");
+        })
+        .catch((error) => {
+          console.error("❌ Error saving payment:", error);
+          alert("❌ Payment recording failed.");
+        });
     },
     onClose: function () {
-      alert("Payment window closed.");
-    }
+      alert("❌ Payment window closed.");
+    },
   });
 
   handler.openIframe();
 };
 
+// Ensure Paystack script is loaded on component mount
 onMounted(() => {
-  const script = document.createElement("script");
-  script.src = "https://js.paystack.co/v1/inline.js";
-  document.body.appendChild(script);
+  loadPaystack();
 });
 </script>

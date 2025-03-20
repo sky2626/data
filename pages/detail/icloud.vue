@@ -60,7 +60,6 @@
     </div>
     <div class="mx-2 md:mx-auto mt-8 max-w-7xl">
       <h2 class="text-2xl font-semibold text-gray-800 mb-4">Related Products</h2>
-
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <div v-for="product in products" :key="product.name"
           class="bg-white shadow-lg p-4 rounded-2xl transform hover:scale-105 transition-all duration-300 ease-in-out">

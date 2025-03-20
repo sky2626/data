@@ -100,7 +100,7 @@ const products = ref([
               <IconsCmenu class="text-2xl" />
               <IconsCart class="text-2xl" />
             </div>
-             -->
+            -->
             <img :src="product.image" alt="product.name"
               class="w-full h-48 object-cover rounded-xl border border-gray-200">
             <h1 class="text-lg font-semibold text-gray-900 mt-4 ">{{ product.name }}</h1>

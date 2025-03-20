@@ -11,10 +11,20 @@
   },
   "dependencies": {
     "@nuxt/ui": "^3.0.0-alpha.12",
+    "@prisma/client": "^6.5.0",
+    "@prisma/nuxt": "^0.3.0",
     "@tailwindcss/vite": "^4.0.1",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
+    "jsonwebtoken": "^9.0.2",
     "nuxt": "^3.15.4",
+    "nuxt-prisma": "^0.0.3",
+    "sqlite3": "^5.1.7",
     "tailwindcss": "^4.0.1",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "devDependencies": {
+    "prisma": "^6.5.0"
   }
 }
