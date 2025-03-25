@@ -73,13 +73,13 @@
     <table v-else class="w-full bg-white shadow-lg rounded-lg overflow-hidden">
       <thead class="bg-gray-800 text-white">
         <tr>
-          <th class="p-4">#</th>
-          <th class="p-4">Phone</th>
-          <th class="p-4">Reference</th>
-          <th class="p-4">Size (GB)</th>
-          <th class="p-4">Amount (GHS)</th>
-          <th class="p-4">Status</th>
-          <th class="p-4">Date</th>
+          <th class="p-4 text-white">#</th>
+          <th class="p-4 text-white">Phone</th>
+          <th class="p-4 text-white">Reference</th>
+          <th class="p-4 text-white">Size (GB)</th>
+          <th class="p-4 text-white">Amount (GHS)</th>
+          <th class="p-4 text-white">Status</th>
+          <th class="p-4 text-white">Date</th>
         </tr>
       </thead>
       <tbody>
@@ -176,10 +176,11 @@ const filterOptions = [
 // Fetch payments from API
 const fetchPayments = async () => {
   try {
-    const response = await useFetch("/api/payments");
+    const response = await useFetch("/api/accounts");
+    const data = await response.json();
 
-    if (response.data.success) {
-      payments.value = repesponse.data;
+    if (data.success) {
+      payments.value = data.data;
     } else {
       throw new Error("Failed to load payments");
     }
