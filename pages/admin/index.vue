@@ -57,6 +57,10 @@ import { ref, computed, onMounted } from 'vue';
 const accounts = ref([]);
 const errorMessage = ref(''); 
 
+definePageMeta({
+  middleware: "auth", // Apply auth middleware
+});
+
 const fetchAccounts = async () => {
   try {
     const { data, error } = await useFetch('/api/accounts');
