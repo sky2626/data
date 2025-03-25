@@ -84,5 +84,4 @@ const register = async () => {
   await navigateTo('/admin/signin')
 }
 
-
 </script>

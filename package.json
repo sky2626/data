@@ -25,6 +25,7 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.9",
     "prisma": "^6.5.0"
   }
 }

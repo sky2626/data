@@ -1,28 +1,36 @@
+import { defineEventHandler, readBody, createError } from "h3";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 const prisma = new PrismaClient();
-const SECRET_KEY = "your_secret_key"; // Store this securely (e.g., in .env)
+const SECRET_KEY = process.env.JWT_SECRET || "4f385fa75a046837ae04343a4c691340ee98a0916d68e956ab91a4812e9619bb"; // Change this in production!
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
-  const { email, password } = body;
+  try {
+    const { email, password } = await readBody(event);
 
-  const user = await prisma.account.findUnique({ where: { email } });
-  if (!user) {
-    throw createError({ statusCode: 400, message: "Invalid email or password" });
+    // Find user by email
+    const account = await prisma.account.findUnique({
+      where: { email },
+    });
+
+    if (!account) {
+      throw createError({ statusCode: 401, statusMessage: "Invalid credentials" });
+    }
+
+    // Verify password
+    const isMatch = await bcrypt.compare(password, account.password);
+    if (!isMatch) {
+      throw createError({ statusCode: 401, statusMessage: "Invalid credentials" });
+    }
+
+    // Generate JWT Token
+    const token = jwt.sign({ userId: account.id, email: account.email }, SECRET_KEY, { expiresIn: "24h" });
+
+    return { success: true, token, message: "Sign-in successful" };
+  } catch (error) {
+    console.error("Auth Error:", error);
+    throw createError({ statusCode: 500, statusMessage: "Internal server error" });
   }
-
-  const isValidPassword = await bcrypt.compare(password, user.password);
-  if (!isValidPassword) {
-    throw createError({ statusCode: 400, message: "Invalid email or password" });
-  }
-
-  // Generate JWT token
-  const token = jwt.sign({ userId: user.id, email: user.email }, SECRET_KEY, {
-    expiresIn: "7d",
-  });
-
-  return { message: "Login successful", token };
 });

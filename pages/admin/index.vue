@@ -1,27 +1,25 @@
 /* pages/payments.vue */
 <template>
   <div class="mt-24 p-6 max-w-4xl mx-auto">
-    <div v-for="account in accounts" :key="accounts.id"
-    class="flex items-center gap-4 mb-4">
-      <h2 class="text-indigo-600 hover:text-indigo-500">{{ account.email }}</h2>
-    </div>
     <div>
-      <h1>Admin Accounts</h1>
-      <ul v-if="accounts.length">
-        <li v-for="account in accounts" :key="account.id">{{ account.email }}</li>
-      </ul>
-      <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
+      <button @click="logout" class="px-4 py-2 bg-red-500 text-white rounded">
+        Logout
+      </button>
+      <div>
+        <h1>Admin Accounts</h1>
+        <ul v-if="accounts.length">
+          <li v-for="account in accounts" :key="account.id" class="text-blue-600">{{ account.email }}</li>
+        </ul>
+        <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
+      </div>
     </div>
+
 
     <h1 class="text-2xl font-bold mb-4">Payments</h1>
     <div class="flex gap-4 mb-4">
-      <input
-        v-model="search"
-        type="text"
-        placeholder="Search by phone or reference"
-        class="p-2 border rounded w-full"
-      />
-      
+      <input v-model="search" type="text" placeholder="Search by phone or reference"
+        class="p-2 border rounded w-full" />
+
       <select v-model="status" class="p-2 border rounded">
         <option value="">All</option>
         <option value="pending">Pending</option>
@@ -61,7 +59,7 @@ const errorMessage = ref('');
 
 const fetchAccounts = async () => {
   try {
-    const { data, error } = await useFetch('/prisma');
+    const { data, error } = await useFetch('/api/accounts');
     if (error.value) throw new Error(error.value.statusMessage);
     accounts.value = data.value.data;
   } catch (error) {
@@ -91,4 +89,14 @@ const filteredPayments = computed(() => {
     );
   });
 });
+
+// Logout 
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const logout = () => {
+  localStorage.removeItem('token'); // Remove token
+  router.push('/signin'); // Redirect to login
+};
 </script>

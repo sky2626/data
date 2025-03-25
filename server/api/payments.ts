@@ -1,4 +1,4 @@
-import prisma from "~/server/prisma";
+import prisma from "~/server/api/accounts";
 import { defineEventHandler, readBody, createError } from "h3";
 import https from "https";
 // Use environment variable for Paystack Secret Key

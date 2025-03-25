@@ -31,3 +31,4 @@ model Payment {
   status      String  @default("pending")
   createdAt   DateTime @default(now())
 }
+
