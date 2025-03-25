@@ -19,7 +19,6 @@ export default defineNuxtConfig({
     },
   },
 
-
   modules: ['@nuxt/ui', "@prisma/nuxt"],
   vite: {
     plugins: [
@@ -27,4 +26,3 @@ export default defineNuxtConfig({
     ],
   },
 })
-

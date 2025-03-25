@@ -16,6 +16,7 @@
     "@tailwindcss/vite": "^4.0.1",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",
+    "file-saver": "^2.0.5",
     "jsonwebtoken": "^9.0.2",
     "nuxt": "^3.15.4",
     "nuxt-prisma": "^0.0.3",

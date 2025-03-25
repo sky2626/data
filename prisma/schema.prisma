@@ -26,9 +26,9 @@ model Payment {
   id          String  @id @default(cuid())
   phone       String
   reference   String  @unique
-  size        String
+  size        Int?
   amount      Float
-  status      String  @default("pending")
+  status      String  
   createdAt   DateTime @default(now())
 }
 

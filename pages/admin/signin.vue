@@ -41,6 +41,10 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
+definePageMeta({
+  layout: "admin"
+})
+
 const email = ref("");
 const password = ref("");
 const errorMessage = ref("");
@@ -57,7 +61,7 @@ const handleSignIn = async () => {
       body: { 
         email: email.value, 
         password: password.value 
-      }, // No need for JSON.stringify()
+      }, 
     });
 
     successMessage.value = "Sign-in successful! Redirecting...";

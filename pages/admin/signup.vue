@@ -43,7 +43,7 @@
 
       <p class="mt-6 text-center text-sm text-gray-600">
         Already have an account? 
-        <NuxtLink to="/auth/login" class="font-semibold text-indigo-600 hover:text-indigo-500">Sign in</NuxtLink>
+        <NuxtLink to="/admin/signin" class="font-semibold text-indigo-600 hover:text-indigo-500">Sign in</NuxtLink>
       </p>
     </div>
   </div>
@@ -53,7 +53,10 @@
 import { ref, inject } from 'vue'
 import { useFetch, navigateTo } from '#app'
 
-const showToast = inject('showToast')
+definePageMeta({
+  layout: "admin",
+})
+
 
 definePageMeta({
   layout: "auth",
