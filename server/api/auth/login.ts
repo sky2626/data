@@ -1,9 +1,13 @@
 import { defineEventHandler, readBody, createError } from "h3";
-import { PrismaClient } from "@prisma/client";
+//import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { PrismaClient } from '@prisma/client/edge'
+import { withAccelerate } from '@prisma/extension-accelerate'
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient().$extends(withAccelerate())
+
+//const prisma = new PrismaClient();
 const SECRET_KEY = process.env.JWT_SECRET || "4f385fa75a046837ae04343a4c691340ee98a0916d68e956ab91a4812e9619bb"; // Change this in production!
 
 export default defineEventHandler(async (event) => {

@@ -1,8 +1,12 @@
 import { defineEventHandler, readBody, createError } from 'h3';
 import https from 'https';
-import { PrismaClient } from '@prisma/client'; // Import PrismaClient
+// import { PrismaClient } from '@prisma/client'; 
+import { PrismaClient } from '@prisma/client/edge'
+import { withAccelerate } from '@prisma/extension-accelerate'
 
-const prisma = new PrismaClient(); // Instantiate Prisma Client
+const prisma = new PrismaClient().$extends(withAccelerate())// Import PrismaClient
+
+//const prisma = new PrismaClient(); // Instantiate Prisma Client
 
 // Use environment variable for Paystack Secret Key
 const PAYSTACK_SECRET_KEY = process.env.PAYSTACK_SECRET_KEY;
@@ -21,7 +25,7 @@ export default defineEventHandler(async (event) => {
       data: {
         phone: body.phone,
         reference: body.reference,
-        size: body.size || null, // Optional
+        size: body.size, // Optional
         amount: body.amount,
         status: body.status,
       },
@@ -33,3 +37,5 @@ export default defineEventHandler(async (event) => {
     return { status: 500, message: "❌ Server error while saving payment" };
   }
 });
+
+

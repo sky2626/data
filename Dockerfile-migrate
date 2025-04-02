@@ -1,0 +1,11 @@
+# This Dockerfile is for prisma migrations. It is not needed if you are running migrations outside of docker.
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+RUN npx prisma migrate deploy

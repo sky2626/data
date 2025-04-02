@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data/
+
+  nuxt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "postgres://postgres:postgres@db:5432/mydatabase"
+      PAYSTACK_SECRET_KEY: "pk_test_eb3bc9ba87ba3fe7f19a2fe09d4a7132ea9d37b2"
+      JWT_SECRET: "4f385fa75a046837ae04343a4c691340ee98a0916d68e956ab91a4812e9619bb"
+      
+  # prisma-migrate:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile-migrate
+  #   depends_on:
+  #     - db
+  #   environment:
+  #     DATABASE_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-password}@db:5432/${POSTGRES_DB:-mydb}
+  #   command: npx prisma migrate deploy
+
+volumes:
+  db-data:
