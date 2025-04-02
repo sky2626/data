@@ -91,7 +91,7 @@ const products = ref([
     </UContainer>
     <UContainer>
       <h2 class="text-2xl font-bold text-black">Popular Product</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-6">
         <a v-for="product in products" :key="product.id" :href="product.link"
           class="w-full p-4 bg-white shadow-lg rounded-2xl flex justify-center transition-transform hover:scale-105 bg-cover bg-center">
           <div>

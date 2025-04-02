@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "postgres://postgres:postgres@db:5432/mydatabase"
+      PAYSTACK_SECRET_KEY: "pk_test_eb3bc9ba87ba3fe7f19a2fe09d4a7132ea9d37b2"
+      JWT_SECRET: "4f385fa75a046837ae04343a4c691340ee98a0916d68e956ab91a4812e9619bb"
+    restart: always
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydatabase
+    volumes:
+      - pgdata:/var/lib/postgresql/data  # Persistent database storage
+
+  nginx:
+    image: jc21/nginx-proxy-manager:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "81:81"
+      - "443:443"
+    volumes:
+      - nginx_data:/data
+      - nginx_letsencrypt:/etc/letsencrypt
+
+volumes:
+  pgdata:  # Named volume for PostgreSQL persistence
+  nginx_data:
+  nginx_letsencrypt:
