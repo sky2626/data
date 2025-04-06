@@ -27,11 +27,6 @@ COPY --from=build /app/.output/ ./
 
 # Change the port and host
 ENV PORT 3000
-ENV HOST 0.0.0.0
-ENV DATABASE_URL="file:./dev.db"
-ENV PAYSTACK_SECRET_KEY="pk_test_eb3bc9ba87ba3fe7f19a2fe09d4a7132ea9d37b2"
-ENV JWT_SECRET="4f385fa75a046837ae04343a4c691340ee98a0916d68e956ab91a4812e9619bb"
-
 
 EXPOSE 3000/tcp
 
