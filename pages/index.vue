@@ -44,14 +44,14 @@ const products = ref([
   },
   {
     id: 3,
-    name: "at",
+    name: "AirtelTigo ishare",
     link: "/detail/at",
     image: "https://assets.nflxext.com/ffe/siteui/vlv3/04ef06cc-5f81-4a8e-8db0-6430ba4af286/web/NG-en-20250224-TRIFECTA-perspective_5680cc3f-a4c0-41bc-a57f-3ef3482ea3ef_large.jpg",
     price: "GH₵10 - GH₵400",
   },
   {
     id: 4,
-    name: "airteltigo",
+    name: "airteltigo Big data",
     link: "/detail/airteltigo",
     image: "https://example.com/airteltigo.jpg",
     price: "GH₵10 - GH₵400",
@@ -105,7 +105,7 @@ const products = ref([
             <h1 class="text-lg font-semibold text-gray-900 mt-4 ">{{ product.name }}</h1>
             <h1 class="text-xl font-bold text-yellow-600 mt-2 ">{{ product.price }}</h1>
             <div class="mt-4">
-              <NuxtLink to="#"
+              <NuxtLink :to="product.link"
                 class="border border-yellow-500 text-yellow-500 px-4 py-2 rounded-lg text-sm hover:bg-yellow-500 hover:text-white transition">
                 View Details
               </NuxtLink>
