@@ -113,7 +113,7 @@ definePageMeta({
 
 const fetchAccounts = async () => {
   try {
-    const { data, error } = await useFetch('/api/accounts');
+    const { data, error } = await fetch('/api/accounts');
     if (error.value) throw new Error(error.value.statusMessage);
     accounts.value = data.value.data;
   } catch (error) {
