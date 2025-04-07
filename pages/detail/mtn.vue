@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pt-18">
     <div class="relative">
       <div
         class="h-[400px] mt-34 max-w-7xl mx-2 md:mx-auto rounded-[65px] absolute top-[-200px] inset-0 bg-[url('/mtn.png')] bg-cover">
@@ -21,8 +21,8 @@
 
           <div class="border-y-3 border-yellow-500 rounded-full w-full h-full p-4">
             <img
-              src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcTetditgkwKb-7fCP26_WQesZAoldpOcC44AfFAkco5jMOEMcaS&psig=AOvVaw3CgmYE-MD34aCjVxiBpac9&ust=1741439274786000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCIDUz_yE-IsDFQAAAAAdAAAAABAE"
-              alt="T-Shirt" class="w-full object-cover rounded-full border border-gray-300/10" />
+              src="/mtnlogo.png"
+              alt="mtn" class="w-full object-cover rounded-full border border-gray-300/10" />
           </div>
 
           <div class="w-full">
@@ -96,7 +96,7 @@
 import { ref, onMounted } from 'vue';
 
 const sizes = ref({
-  1: 6, 2: 11, 3: 16, 4: 21, 5: 26, 6: 31, 7: 36, 8: 41, 9: 46, 10: 51
+  1: 5.5, 2: 11, 3: 17, 4: 29, 5: 26, 6: 30, 8: 39, 10: 46, 15: 69, 20: 90, 25: 109, 30: 129, 40: 168, 50: 205, 100: 405
 });
 
 const selectedPrice = ref(null);
@@ -148,6 +148,7 @@ const payWithPaystack = () => {
         body: {
           phone: phoneNumber.value,
           reference: response.reference,
+          bundletype: "mtn",
           size: Number(Object.keys(sizes.value).find((key) => sizes.value[key] === selectedPrice.value)),
           amount: selectedPrice.value,
           status: response.status,

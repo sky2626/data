@@ -1,7 +1,7 @@
 <template>
   <nav class="fixed z-100 top-0 left-0 w-full bg-white/10 backdrop-blur-lg shadow-lg p-4">
     <div class="container mx-auto flex justify-between items-center">
-      <NuxtLink to="/" class="flex items-center space-x-2">
+      <NuxtLink to="/" class="flex items-center space-x-1">
         <img src="/bisadata.png" alt="bisadatagh" class="w-12 h-12" />
         <h1 class="text-yellow-600 text-2xl font-bold">Bisadatagh</h1>
       </NuxtLink>

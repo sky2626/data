@@ -25,6 +25,7 @@ export default defineEventHandler(async (event) => {
       data: {
         phone: body.phone,
         reference: body.reference,
+        bundletype: body.bundletype,
         size: body.size, // Optional
         amount: body.amount,
         status: body.status,

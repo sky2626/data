@@ -44,8 +44,8 @@ const products = ref([
   },
   {
     id: 3,
-    name: "tigo",
-    link: "/detail/tigo",
+    name: "at",
+    link: "/detail/at",
     image: "https://assets.nflxext.com/ffe/siteui/vlv3/04ef06cc-5f81-4a8e-8db0-6430ba4af286/web/NG-en-20250224-TRIFECTA-perspective_5680cc3f-a4c0-41bc-a57f-3ef3482ea3ef_large.jpg",
     price: "GH₵10 - GH₵400",
   },
@@ -79,7 +79,6 @@ const products = ref([
 
             <!-- CTA NuxtLink s -->
             <div class="mt-4">
-
               <NuxtLink to="#"
                 class="border border-yellow-500 text-yellow-500 px-4 py-2 rounded-lg text-sm hover:bg-yellow-500 hover:text-white transition">
                 View Details

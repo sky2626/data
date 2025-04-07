@@ -6,7 +6,7 @@
         class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 gap-y-8 md:gap-8 py-10 max-w-sm mx-auto sm:max-w-3xl lg:max-w-full">
         <div class="col-span-full mb-10 lg:col-span-2 lg:mb-0">
           <a href="/" class="flex justify-center lg:justify-start items-center">
-            <img src="/bisadata.png" alt="bisadatagh" class="w-12 h-12"  />
+            <img src="/bisadata.png" alt="bisadatagh" class="w-12 h-12" />
             <h1 class="text-yellow-600 text-2xl font-bold">Bisadatagh</h1>
           </a>
           <p class="py-8 text-sm text-gray-500 lg:max-w-xs text-center lg:text-left">Trusted by most people</p>
@@ -48,11 +48,11 @@
           <h4 class="text-lg text-gray-900 font-medium mb-7">Subscribe</h4>
           <p class="text-sm text-gray-500 leading-6 mb-7">Subscribe to get the latest news from us</p>
           <a href="javascript:;"
-            class="flex items-center justify-center gap-2 border border-indigo-600 rounded-full py-3 px-6 w-fit lg:mx-0  text-sm text-indigo-600 font-semibold transition-all duration-500 hover:bg-indigo-50">Subscribe<svg
+            class="flex items-center justify-center gap-2 border border-yellow-600 rounded-full py-3 px-6 w-fit lg:mx-0  text-sm text-yellow-600 font-semibold transition-all duration-500 hover:bg-yellow">Subscribe<svg
               width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M1.25 6L13.25 6M9.5 10.5L13.4697 6.53033C13.7197 6.28033 13.8447 6.15533 13.8447 6C13.8447 5.84467 13.7197 5.71967 13.4697 5.46967L9.5 1.5"
-                stroke="#4F46E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                stroke="#FF980E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </a>
         </div>

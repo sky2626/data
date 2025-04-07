@@ -13,6 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
 model Account {
   id        String  @id @default(cuid())
   email     String  @unique
@@ -22,12 +23,13 @@ model Account {
 
 
 model Payment {
-  id          String  @id @default(cuid())
-  phone       String
-  reference   String  @unique
-  size        Int?
-  amount      Float
-  status      String  
-  createdAt   DateTime @default(now())
+  id            String  @id @default(cuid())
+  bundletype    String  @default("mtn")
+  phone         String
+  reference     String  @unique
+  size          Int?
+  amount        Float
+  status        String  
+  createdAt     DateTime @default(now())
 }
 

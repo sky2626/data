@@ -5,7 +5,7 @@
         class="h-[400px] mt-34 max-w-7xl mx-2 md:mx-auto rounded-[65px] absolute top-[-200px] inset-0 bg-[url('/at.png')] bg-cover">
         <div class="flex justify-between items-center p-8">
           <IconsMtn class="text-yellow-800 text-2xl" />
-          <h2 class="text-2xl text-black font-semibold">AirtelTigo Big Data</h2>
+          <h2 class="text-2xl text-black font-semibold">AirtelTigo Data</h2>
           <NuxtLink to="/" class="text-black font-semibold px-6 hover:text-gray-800">
             New Product
           </NuxtLink>
@@ -15,8 +15,8 @@
       <div class="max-w-5xl mx-2 md:mx-auto mt-34 p-6 shadow-lg rounded-[60px] bg-gray-300/10 backdrop-blur-lg ">
         <div class="w-full flex flex-col md:flex-row justify-center gap-4 py-8">
           <div class="w-full">
-            <h1 class="text-2xl font-bold text-gray-800">AirtelTigo Big DATA</h1>
-            <p class="text-gray-600 mt-2">AirtelTigo Big data non-expiry data available</p>
+            <h1 class="text-2xl font-bold text-gray-800">AirtelTigo ishare DATA</h1>
+            <p class="text-gray-600 mt-2">AirtelTigo ishare non-expiry data available</p>
           </div>
 
           <div class="border-y-3 border-[#E40001] rounded-full w-full h-full p-4">
@@ -94,7 +94,7 @@
 import { ref, onMounted } from 'vue';
 
 const sizes = ref({
-  20: 79, 25: 89, 30: 100, 40: 125, 50: 145, 100: 205, 200: 358
+  1: 4.9, 2: 8.9, 3: 12.5, 4: 15.9, 5: 20, 6: 24.5, 7: 27.5, 8: 32, 10: 39.5, 15: 69
 });
 
 const selectedPrice = ref(null);
