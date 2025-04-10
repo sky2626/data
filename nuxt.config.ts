@@ -5,6 +5,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
+
+  nitro: {
+    rollupConfig: {
+      external: ["cloudflare:sockets"],
+    },
+  },
   
   runtimeConfig: {
     paystackSecretKey: process.env.PAYSTACK_SECRET_KEY, // Only available server-side
