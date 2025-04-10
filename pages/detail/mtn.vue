@@ -28,7 +28,7 @@
           <div class="w-full">
             <h2 class="text-lg font-semibold mb-4 text-black">Available Bundle</h2>
             <div class="gap-2 grid grid-cols-3 md:grid-cols-4">
-              <div v-for="(price, size) in sizes" :key="size" class="flex flex-col">
+              <div v-for="[size, price] in Object.entries(sizes)" class="flex flex-col">
                 <div @click="togglePrice(size, price)"
                   class="bg-gray-300/10 backdrop-blur-lg shadow-sm text-black font-semibold px-2 py-2 rounded-xl hover:bg-yellow-500">
                   {{ size }} GB
@@ -93,6 +93,7 @@
 </template>
 
 <script setup>
+definePageMeta({ prerender: false });
 import { ref, onMounted } from 'vue';
 
 const sizes = ref({
