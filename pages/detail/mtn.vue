@@ -20,44 +20,43 @@
           </div>
 
           <div class="border-y-3 border-yellow-500 rounded-full w-full h-full p-4">
-            <img
-              src="/mtnlogo.png"
-              alt="mtn" class="w-full object-cover rounded-full border border-gray-300/10" />
+            <img src="/mtnlogo.png" alt="mtn" class="w-full object-cover rounded-full border border-gray-300/10" />
           </div>
-
-          <div class="w-full">
-            <h2 class="text-lg font-semibold mb-4 text-black">Available Bundle</h2>
-            <div class="gap-2 grid grid-cols-3 md:grid-cols-4">
-              <div v-for="[size, price] in Object.entries(sizes)" class="flex flex-col">
-                <div @click="togglePrice(size, price)"
-                  class="bg-gray-300/10 backdrop-blur-lg shadow-sm text-black font-semibold px-2 py-2 rounded-xl hover:bg-yellow-500">
-                  {{ size }} GB
+          <ClientOnly>
+            <div class="w-full">
+              <h2 class="text-lg font-semibold mb-4 text-black">Available Bundle</h2>
+              <div class="gap-2 grid grid-cols-3 md:grid-cols-4">
+                <div v-for="(price, size) in sizes" :key="size" class="flex flex-col">
+                  <div @click="togglePrice(size, price)"
+                    class="bg-gray-300/10 backdrop-blur-lg shadow-sm text-black font-semibold px-2 py-2 rounded-xl hover:bg-yellow-500">
+                    {{ size }} GB
+                  </div>
                 </div>
               </div>
-            </div>
-            <div>
-              <h2 class="mt-4 text-lg font-semibold">Selected Price:</h2>
-              <p class="text-gray-800 mt-1">
-                {{ selectedPrice ? `GH₵${selectedPrice}` : 'Select a size to see the price' }}
-              </p>
-            </div>
-            <div class="mt-4">
-              <label for="phone" aria-required="true">Recipient Number</label>
-              <input v-model="phoneNumber" type="tel"
-                class="border border-black rounded-xl p-2 w-full focus:ring-yellow-500 focus:border-yellow-500"
-                id="phone" name="phone" placeholder="Recipient Number" required>
-            </div>
-            
+              <div>
+                <h2 class="mt-4 text-lg font-semibold">Selected Price:</h2>
+                <p class="text-gray-800 mt-1">
+                  {{ selectedPrice ? `GH₵${selectedPrice}` : 'Select a size to see the price' }}
+                </p>
+              </div>
+              <div class="mt-4">
+                <label for="phone" aria-required="true">Recipient Number</label>
+                <input v-model="phoneNumber" type="tel"
+                  class="border border-black rounded-xl p-2 w-full focus:ring-yellow-500 focus:border-yellow-500"
+                  id="phone" name="phone" placeholder="Recipient Number" required>
+              </div>
 
-            <!-- Paystack Payment Button -->
-            <div class="mt-4">
-              <button @click="payWithPaystack"
-                class="bg-black text-yellow-500 px-6 py-2 rounded-xl text-lg hover:bg-gray-800 couser-pointer">
-                Pay Now
-              </button>
-            </div>
 
-          </div>
+              <!-- Paystack Payment Button -->
+              <div class="mt-4">
+                <button @click="payWithPaystack"
+                  class="bg-black text-yellow-500 px-6 py-2 rounded-xl text-lg hover:bg-gray-800 couser-pointer">
+                  Pay Now
+                </button>
+              </div>
+
+            </div>
+          </ClientOnly>
         </div>
       </div>
     </div>
@@ -104,11 +103,15 @@ const selectedPrice = ref(null);
 const phoneNumber = ref("");
 const config = useRuntimeConfig();
 // Now 'config' will be an object containing both server-side and public keys
-const publicKey = config.paystackSecretKey;
-console.log(publicKey);
+
+const publicKey = "pk_test_eb3bc9ba87ba3fe7f19a2fe09d4a7132ea9d37b2"; // Replace with your actual public key
+
+//const publicKey = config.paystackSecretKey;
+//console.log(publicKey);
 
 const togglePrice = (size, price) => {
   selectedPrice.value = selectedPrice.value === price ? null : price;
+  console.log(`Selected size: ${size} GB, Price: GH₵${price}`);
 };
 
 // Function to load Paystack script
