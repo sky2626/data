@@ -92,7 +92,7 @@
 </template>
 
 <script setup>
-definePageMeta({ prerender: false });
+//definePageMeta({ prerender: false });
 import { ref, onMounted } from 'vue';
 
 const sizes = ref({
