@@ -5,6 +5,14 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
+  
+  runtimeConfig: {
+    paystackSecretKey: process.env.PAYSTACK_SECRET_KEY, // Only available server-side
+    public: {
+      paystackPublicKey: process.env.PAYSTACK_PUBLIC_KEY, // Available client-side
+    }
+  },
+
   app: {
     head: {
       title: 'Data Site',

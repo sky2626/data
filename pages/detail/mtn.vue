@@ -101,7 +101,10 @@ const sizes = ref({
 
 const selectedPrice = ref(null);
 const phoneNumber = ref("");
-const publicKey = "pk_test_eb3bc9ba87ba3fe7f19a2fe09d4a7132ea9d37b2"; // Replace with your Paystack public key
+const config = useRuntimeConfig();
+// Now 'config' will be an object containing both server-side and public keys
+const publicKey = config.paystackSecretKey;
+console.log(publicKey);
 
 const togglePrice = (size, price) => {
   selectedPrice.value = selectedPrice.value === price ? null : price;
