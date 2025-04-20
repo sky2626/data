@@ -8,7 +8,10 @@ export default defineNuxtConfig({
   ssr: false, // for SSG
   target: 'static',
   nitro: {
-    preset: 'cloudflare'
+    preset: 'cloudflare',
+    output: {
+      publicDir: 'dist'
+    }
   },
   
   runtimeConfig: {
