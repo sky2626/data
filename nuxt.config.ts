@@ -9,10 +9,10 @@ export default defineNuxtConfig({
   target: 'static',
   nitro: {
     preset: 'cloudflare',
-    output: {
-      publicDir: 'dist'
-    }
-  },
+    //output: {
+    //  publicDir: 'dist'
+    //}
+  },//
   
   runtimeConfig: {
     paystackSecretKey: process.env.PAYSTACK_SECRET_KEY, // Only available server-side
